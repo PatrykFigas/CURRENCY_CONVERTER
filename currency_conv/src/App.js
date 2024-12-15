@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './App.css';
 
 // Exchange rates - you can modify or fetch them dynamically from an API
 const ExchangeRates = {
@@ -26,7 +27,7 @@ function App() {
     };
 
     return (
-        <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+        <div className="app-container">
             <h1>Currency Converter</h1>
             <div>
                 <label>
@@ -36,7 +37,6 @@ function App() {
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
                         placeholder="Enter amount in PLN"
-                        style={{ margin: "10px", padding: "5px" }}
                     />
                 </label>
             </div>
@@ -46,7 +46,6 @@ function App() {
                     <select
                         value={currency}
                         onChange={(e) => setCurrency(e.target.value)}
-                        style={{ margin: "10px", padding: "5px" }}
                     >
                         {Object.keys(ExchangeRates).map((cur) => (
                             <option key={cur} value={cur}>
@@ -56,22 +55,13 @@ function App() {
                     </select>
                 </label>
             </div>
-            <button
-                onClick={handleConvert}
-                style={{
-                    backgroundColor: "#4CAF50",
-                    color: "white",
-                    border: "none",
-                    padding: "10px 20px",
-                    cursor: "pointer",
-                }}
-            >
+            <button onClick={handleConvert}>
                 Convert
             </button>
             {result && (
-                <h2 style={{ marginTop: "20px", color: "#333" }}>
+                <div className="result">
                     Result: {result}
-                </h2>
+                </div>
             )}
         </div>
     );
